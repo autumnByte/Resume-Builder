@@ -1,4 +1,4 @@
-# Interactive Resume Builder
+# Resume Builder
 
 ## Overview
 
