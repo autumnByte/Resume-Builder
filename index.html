@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Resume Builder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- LEFT: Form -->
+    <aside class="card" id="leftCard">
+      <header>
+        <div>
+          <h1>Resume Builder</h1>
+          <p>Fill the form — preview updates in real-time</p>
+        </div>
+      </header>
+
+      <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+      <form id="resumeForm" autocomplete="off" novalidate>
+        <div class="row">
+          <div style="flex:1">
+            <label for="fullName">Name</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Your full name" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div style="flex:1">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" />
+          </div>
+          <div style="flex:1">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91 91234 56789" />
+          </div>
+        </div>
+
+        <div class="row">
+          <label for="summary">Profile Summary</label>
+          <textarea id="summary" name="summary" placeholder="Short professional summary"></textarea>
+        </div>
+
+        <div class="block">
+          <div class="flex-between">
+            <label>Education</label>
+            <div class="right-actions"><button type="button" class="btn ghost" id="addEdu">+ Add</button></div>
+          </div>
+          <div id="educations" class="list" aria-live="polite"></div>
+        </div>
+
+        <div class="block">
+          <label>Skills (click to toggle)</label>
+          <div id="skillsList" class="list skillsWrap" role="list" aria-label="skills list"></div>
+          <div style="margin-top:8px">
+            <input id="skillInput" type="text" placeholder="Add custom skill and press Enter" />
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="flex-between">
+            <label>Experience</label>
+            <div class="right-actions"><button type="button" class="btn ghost" id="addExp">+ Add</button></div>
+          </div>
+          <div id="experiences" class="list" aria-live="polite"></div>
+        </div>
+
+        <div style="margin-top:12px" class="controls">
+          <button type="button" class="btn" id="downloadPdf">Download PDF</button>
+          <button type="button" class="btn ghost" id="clearBtn">Clear Form</button>
+        </div>
+
+        <footer>
+          Tip: Use the <strong>Download PDF</strong> button to export (uses a small client-side library).
+        </footer>
+      </form>
+    </aside>
+
+    <!-- RIGHT: Live Preview -->
+    <main class="preview-wrap">
+      <div class="card resume" id="resumePreview" data-has-content="false" aria-live="polite">
+        <div class="top">
+          <div class="avatar" id="avatar">SD</div>
+          <div>
+            <div class="name" id="pName">Your Name</div>
+            <div class="meta" id="pMeta">Email · Phone</div>
+            <div class="muted-small" id="pSummary">A short summary will appear here as you type.</div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="section" id="sectionSkills">
+          <h3>Skills</h3>
+          <div id="pSkills"></div>
+        </div>
+
+        <div class="section" id="sectionEdu">
+          <h3>Education</h3>
+          <div id="pEducation"></div>
+        </div>
+
+        <div class="section" id="sectionExp">
+          <h3>Experience</h3>
+          <div id="pExperience"></div>
+        </div>
+
+      </div>
+
+      <div class="hint">Live Preview — responsive and printable</div>
+    </main>
+  </div>
+
+  <!-- Templates (hidden) -->
+  <template id="eduTpl">
+    <div class="list-item edu-item">
+      <div style="flex:1">
+        <input class="edu-institute" placeholder="Institute / University" />
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <input class="edu-degree small" placeholder="Degree" />
+          <input class="edu-year small" placeholder="Year / Duration" />
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <button title="remove" class="btn ghost remove">Remove</button>
+      </div>
+    </div>
+  </template>
+
+  <template id="expTpl">
+    <div class="list-item exp-item">
+      <div style="flex:1">
+        <input class="exp-role" placeholder="Role / Title" />
+        <input class="exp-company" placeholder="Company / Org" style="margin-top:6px" />
+        <textarea class="exp-desc" placeholder="Short description of responsibilities / achievements" style="margin-top:6px"></textarea>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <button title="remove" class="btn ghost remove">Remove</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
