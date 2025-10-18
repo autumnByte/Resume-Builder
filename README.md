@@ -2,7 +2,7 @@
 
 ## Overview
 
-The **Interactive Resume Builder** is a responsive, web-based application that allows users to create and preview a professional resume in real-time. Users can input personal information, education, skills, and experience, and see a live preview of their resume with smooth animations and a pastel-themed design.
+The **Resume Builder** is a responsive, web-based application that allows users to create and preview a professional resume in real-time. Users can input personal information, education, skills, and experience, and see a live preview of their resume with smooth animations and a pastel-themed design.
 
 ## Features
 
